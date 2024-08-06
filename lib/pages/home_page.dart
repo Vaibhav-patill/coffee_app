@@ -15,19 +15,31 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   //list of coffee types
   final List coffeeType = [
-    ['Cappucino', true,],
-    ['Latte', false,],
-    ['Black', false,],
-    ['Tea', false,],
+    [
+      'Cappucino',
+      true,
+    ],
+    [
+      'Latte',
+      false,
+    ],
+    [
+      'Black',
+      false,
+    ],
+    [
+      'Tea',
+      false,
+    ],
   ];
 
   // /user tapeped coffee types
   void coffeetypeSelected(int index) {
     setState(() {
-      for(int i=0;i<coffeeType.length;i++){
-        coffeeType[i][1]=false;
+      for (int i = 0; i < coffeeType.length; i++) {
+        coffeeType[i][1] = false;
       }
-      coffeeType[index][1]=true;
+      coffeeType[index][1] = true;
     });
   }
 
@@ -70,7 +82,7 @@ class _HomePageState extends State<HomePage> {
             child: Text(
               'Find the best coffee for you',
               style: GoogleFonts.bebasNeue(
-                fontSize: 48,
+                fontSize: 44,
               ),
             ),
           ),
@@ -101,40 +113,40 @@ class _HomePageState extends State<HomePage> {
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: coffeeType.length,
-              itemBuilder: (context,index){
-              return CoffeeType(
-                coffeeType:coffeeType[index][0],
-                isSelected:coffeeType[index][1],
-                onTap: (){
-                  coffeetypeSelected(index);
-                },
-              );
-            },
+              itemBuilder: (context, index) {
+                return CoffeeType(
+                  coffeeType: coffeeType[index][0],
+                  isSelected: coffeeType[index][1],
+                  onTap: () {
+                    coffeetypeSelected(index);
+                  },
+                );
+              },
             ),
           ),
 
           //horizontal listview coffee titles
           Expanded(
               child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: const [
-                  CoffeeTile(
-                    coffeeImagePath: 'lib/images/coffee1.jpg',
-                    coffeeName: 'Latte',
-                    coffeePrice: '40.00',
-                  ),
-                  CoffeeTile(
-                    coffeeImagePath: 'lib/images/coffee2.jpg',
-                    coffeeName: 'Cappucino',
-                    coffeePrice: '180.00',
-                  ),
-                  CoffeeTile(
-                    coffeeImagePath: 'lib/images/coffee3.jpg',
-                    coffeeName: 'Milk Coffee',
-                    coffeePrice: '20.00',
-                  ),
-                ],
-              ))
+            scrollDirection: Axis.horizontal,
+            children: const [
+              CoffeeTile(
+                coffeeImagePath: 'lib/images/coffee1.jpg',
+                coffeeName: 'Latte',
+                coffeePrice: '40.00',
+              ),
+              CoffeeTile(
+                coffeeImagePath: 'lib/images/coffee2.jpg',
+                coffeeName: 'Cappucino',
+                coffeePrice: '180.00',
+              ),
+              CoffeeTile(
+                coffeeImagePath: 'lib/images/coffee3.jpg',
+                coffeeName: 'Milk Coffee',
+                coffeePrice: '20.00',
+              ),
+            ],
+          ))
         ],
       ),
     );
